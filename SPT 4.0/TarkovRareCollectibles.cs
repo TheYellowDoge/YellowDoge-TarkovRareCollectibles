@@ -1,4 +1,4 @@
-﻿using SPTarkov.DI.Annotations;
+using SPTarkov.DI.Annotations;
 using SPTarkov.Server.Core.DI;
 using SPTarkov.Server.Core.Helpers;
 using SPTarkov.Server.Core.Models.Common;
@@ -44,13 +44,13 @@ namespace TarkovRareCollectibles
             var pathToMod = modHelper.GetAbsolutePathToModFolder(Assembly.GetExecutingAssembly());
 
             // Load JSON files using strongly-typed deserialization
-            var config = modHelper.GetJsonDataFromFile<Dictionary<string, double>>(pathToMod, @"config\config.json");
-            var itemIdLookup = modHelper.GetJsonDataFromFile<Dictionary<string, string>>(pathToMod, @"db\Items\itemIdLookup.json");
-            var itemData = modHelper.GetJsonDataFromFile<Dictionary<string, NewItemFromCloneDetails>>(pathToMod, @"db\Items\itemData.json");
-            var staticLootData = modHelper.GetJsonDataFromFile<Dictionary<string, Dictionary<string, Dictionary<string, double>>>>(pathToMod, @"db\Items\staticLootData.json");
-            var looseLootData = modHelper.GetJsonDataFromFile<Dictionary<string, List<SpawnData>>>(pathToMod, @"db\Items\looseLootData.json");
-            var hallofFameData = modHelper.GetJsonDataFromFile<Dictionary<string, string>>(pathToMod, @"db\Items\hallofFameData.json");
-            var traderData = modHelper.GetJsonDataFromFile<Dictionary<string, Dictionary<string, bool>>>(pathToMod, @"db\Items\traderData.json");
+            var config = modHelper.GetJsonDataFromFile<Dictionary<string, double>>(pathToMod, System.IO.Path.Combine("config", "config.json"));
+            var itemIdLookup = modHelper.GetJsonDataFromFile<Dictionary<string, string>>(pathToMod, System.IO.Path.Combine("db","Items","itemIdLookup.json"));
+            var itemData = modHelper.GetJsonDataFromFile<Dictionary<string, NewItemFromCloneDetails>>(pathToMod, System.IO.Path.Combine("db", "Items", "itemData.json"));
+            var staticLootData = modHelper.GetJsonDataFromFile<Dictionary<string, Dictionary<string, Dictionary<string, double>>>>(pathToMod, System.IO.Path.Combine("db", "Items", "staticLootData.json"));
+            var looseLootData = modHelper.GetJsonDataFromFile<Dictionary<string, List<SpawnData>>>(pathToMod, System.IO.Path.Combine("db", "Items", "looseLootData.json"));
+            var hallofFameData = modHelper.GetJsonDataFromFile<Dictionary<string, string>>(pathToMod, System.IO.Path.Combine("db", "Items", "hallofFameData.json"));
+            var traderData = modHelper.GetJsonDataFromFile<Dictionary<string, Dictionary<string, bool>>>(pathToMod, System.IO.Path.Combine("db", "Items", "traderData.json"));
 
             logger.Info("[Tarkov Rare Collectibles] Start loading items");
 
